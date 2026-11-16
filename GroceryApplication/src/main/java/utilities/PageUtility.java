@@ -1,0 +1,40 @@
+package utilities;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class PageUtility {
+	public void selectDropdownWithValue(WebElement element, String value) {
+	    Select object = new Select(element);
+	    object.selectByValue(value);
+	}
+	public void selectDropdownWithIndex(WebElement element, String value) {
+	    Select object = new Select(element);
+	    object.selectByIndex(0);;
+	}
+	 public void selectDropdownWithVisibleText(WebElement element, String value) {
+		    Select object = new Select(element);
+		    object.selectByVisibleText(value);;
+	 }
+	 public void scrollPage(WebDriver driver) {
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,150)","");
+			js.executeScript("window.scrollBy(0,-150)","");
+	 }
+	 public void click(WebDriver driver , WebElement element) {
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		 js.executeScript("arguments[0].click();", element);
+	}
+	 public void clickUsingActions(WebDriver driver, WebElement element) {
+		    Actions action = new Actions(driver);
+		    action.click(element).perform();
+		}
+
+		public void doubleClick(WebDriver driver, WebElement element) {
+		    Actions action = new Actions(driver);
+		    action.doubleClick(element).perform();
+		}
+}
